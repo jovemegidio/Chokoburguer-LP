@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background-color: #E8A630;
+    color: #1A0A00;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1A0A00;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #C07C3B;
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-brand-gold text-brand-dark font-semibold text-sm tracking-wide uppercase transition-all duration-300 hover:bg-brand-caramel hover:scale-105 hover:shadow-[0_0_24px_#E8A63060] active:scale-95;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-8 py-3.5 rounded-full border-2 border-brand-gold text-brand-gold font-semibold text-sm tracking-wide uppercase transition-all duration-300 hover:bg-brand-gold hover:text-brand-dark hover:scale-105 active:scale-95;
+  }
+
+  .section-title {
+    @apply font-display text-4xl md:text-5xl font-bold text-brand-cream;
+  }
+
+  .gold-gradient {
+    @apply bg-gradient-to-r from-brand-gold via-brand-caramel to-brand-gold bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl;
+  }
+
+  .shimmer-gold {
+    background: linear-gradient(
+      90deg,
+      #E8A630 0%,
+      #FDF3E3 40%,
+      #E8A630 60%,
+      #C07C3B 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Noise texture overlay */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
