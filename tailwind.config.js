@@ -9,18 +9,53 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          brown:       '#3B1F0E',
-          dark:        '#1A0A00',
-          chocolate:   '#5C2D0A',
-          caramel:     '#C07C3B',
-          gold:        '#E8A630',
-          cream:       '#FDF3E3',
-          pink:        '#F4A5C0',
-          red:         '#D94F2B',
-          paper:       '#FDF6EE',
-          'paper-soft':'#EFE6D9',
+          bg:           '#091017',
+          'bg-soft':    '#101922',
+          panel:        '#14202b',
+          paper:        '#f6efe4',
+          'paper-soft': '#efe3d1',
+          text:         '#f9f4ed',
+          ink:          '#121820',
+          'ink-muted':  '#5f6772',
+          red:          '#ff5a36',
+          yellow:       '#f1c643',
+          green:        '#19b66b',
+          blue:         '#2b67ff',
+          orange:       '#ff8a49',
+          // Legacy aliases
+          dark:         '#091017',
+          cream:        '#f9f4ed',
+          gold:         '#f1c643',
+          caramel:      '#ff8a49',
         },
       },
+      fontFamily: {
+        display: ['var(--font-display)', 'sans-serif'],
+        body:    ['var(--font-body)', 'sans-serif'],
+      },
+      animation: {
+        'float':   'float 6s ease-in-out infinite',
+        'shimmer': 'shimmer 1.4s linear infinite',
+        'fade-up': 'fadeUp 0.6s ease-out forwards',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%':      { transform: 'translateY(-12px)' },
+        },
+        shimmer: {
+          '0%':   { backgroundPosition: '200% 0, 0 0' },
+          '100%': { backgroundPosition: '-200% 0, 0 0' },
+        },
+        fadeUp: {
+          from: { opacity: '0', transform: 'translateY(24px)' },
+          to:   { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+    },
+  },
+  plugins: [],
+}
       fontFamily: {
         display: ['var(--font-display)', 'serif'],
         body:    ['var(--font-body)', 'sans-serif'],

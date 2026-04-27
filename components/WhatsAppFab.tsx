@@ -26,7 +26,14 @@ export default function WhatsAppFab() {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 10, scale: 0.92 }}
             transition={{ duration: 0.18 }}
-            className="bg-white/95 backdrop-blur border border-brand-dark/10 text-brand-dark text-xs font-medium px-3 py-2 rounded-xl whitespace-nowrap shadow-2xl"
+          className="text-xs font-black px-3 py-2 rounded-xl whitespace-nowrap"
+            style={{
+              border: '1px solid rgba(255,255,255,0.14)',
+              background: 'rgba(12,18,26,0.90)',
+              backdropFilter: 'blur(16px)',
+              color: '#f9f4ed',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.32)',
+            }}
           >
             Fale conosco no WhatsApp 💬
           </motion.span>

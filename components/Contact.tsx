@@ -12,11 +12,141 @@ function WhatsAppIcon() {
   )
 }
 
-const WHATSAPP = '5511999999999' // Substituir pelo número real
+const WHATSAPP = '5511999999999'
 
 const infoCards = [
-  {
-    icon: <Clock className="w-5 h-5" />,
+  { icon: Clock,  label: 'Horário',    value: 'Aberto até as 15h',     sub: 'Confira disponibilidade no app' },
+  { icon: MapPin, label: 'Entrega',    value: 'Delivery na região',    sub: 'Consulte cobertura de entrega' },
+  { icon: Phone,  label: 'Pedidos',    value: 'Pelo link do cardápio', sub: 'pedido.anota.ai/loja/chokoburguer' },
+]
+
+export default function Contact() {
+  const ref    = useRef<HTMLElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  return (
+    <section ref={ref} id="contato" className="py-20 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Contact card — dark with gradients */}
+        <motion.div
+          className="relative overflow-hidden"
+          style={{
+            borderRadius: '36px',
+            border: '1px solid rgba(255,255,255,0.10)',
+            background: 'radial-gradient(ellipse at 0% 0%, rgba(255,90,54,0.22), transparent 48%), radial-gradient(ellipse at 100% 100%, rgba(43,103,255,0.18), transparent 48%), radial-gradient(ellipse at 100% 0%, rgba(25,182,107,0.12), transparent 36%), linear-gradient(160deg, #14202b, #0b1118)',
+          }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="grid md:grid-cols-[1fr_1.1fr] gap-0">
+
+            {/* Left — info */}
+            <div className="p-8 sm:p-12">
+              <span className="eyebrow--light">Fale conosco</span>
+
+              <h2
+                className="font-display font-black mt-5 mb-2 leading-[0.94] tracking-tight"
+                style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', color: '#f9f4ed' }}
+              >
+                Estamos aqui{' '}
+                <span style={{ color: '#f1c643' }}>pra você</span>
+              </h2>
+              <p className="text-sm mb-8" style={{ color: 'rgba(249,244,237,0.6)' }}>
+                Pedido mínimo R$ 15,00 · Entrega na região
+              </p>
+
+              <div className="space-y-3">
+                {infoCards.map((card, i) => (
+                  <motion.div
+                    key={card.label}
+                    className="flex items-start gap-4 p-4 rounded-2xl"
+                    style={{ border: '1px solid rgba(255,255,255,0.10)', background: 'rgba(255,255,255,0.05)' }}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.45, delay: 0.1 + i * 0.08 }}
+                  >
+                    <div
+                      className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ background: 'rgba(241,198,67,0.14)', color: '#f1c643' }}
+                    >
+                      <card.icon size={16} />
+                    </div>
+                    <div>
+                      <p className="text-xs mb-0.5" style={{ color: 'rgba(249,244,237,0.5)' }}>{card.label}</p>
+                      <p className="font-black text-sm" style={{ color: '#f9f4ed' }}>{card.value}</p>
+                      <p className="text-xs mt-0.5" style={{ color: 'rgba(249,244,237,0.42)' }}>{card.sub}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — paper panel + CTAs */}
+            <motion.div
+              className="paper-card m-5 p-8 flex flex-col items-center justify-center text-center gap-5"
+              initial={{ opacity: 0, x: 20 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.18 }}
+            >
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center text-3xl"
+                style={{ background: 'rgba(255,90,54,0.12)' }}
+              >
+                🍫
+              </div>
+
+              <div>
+                <h3 className="font-display font-extrabold text-2xl mb-2" style={{ color: '#121820' }}>
+                  Pronto para pedir?
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: '#5f6772' }}>
+                  Acesse nosso cardápio, escolha seus favoritos e receba na porta.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3 w-full">
+                <a
+                  href="https://pedido.anota.ai/loja/chokoburguer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary w-full justify-center"
+                >
+                  <ShoppingBag size={16} />
+                  Fazer pedido agora
+                </a>
+
+                <a
+                  href={`https://wa.me/${WHATSAPP}?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Chokoburguer`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 w-full h-12 rounded-full font-black text-sm tracking-wide uppercase transition-all duration-200 hover:opacity-90"
+                  style={{ background: '#25D366', color: '#fff' }}
+                >
+                  <WhatsAppIcon />
+                  WhatsApp
+                </a>
+
+                <a
+                  href="https://www.instagram.com/chokoburguer/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 w-full h-12 rounded-full font-black text-sm tracking-wide uppercase transition-all duration-200 hover:opacity-90"
+                  style={{ border: '1px solid rgba(18,26,32,0.18)', color: '#121820' }}
+                >
+                  <Instagram size={16} />
+                  Instagram
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
     label: 'Horário de funcionamento',
     value: 'Aberto até as 15h',
     sub: 'Confira disponibilidade no app',

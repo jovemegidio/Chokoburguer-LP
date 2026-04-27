@@ -1,16 +1,16 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Bricolage_Grotesque, Manrope } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
-  variable: '--font-body',
+  variable: '--font-display',
   display: 'swap',
 })
 
-const playfair = Playfair_Display({
+const manrope = Manrope({
   subsets: ['latin'],
-  variable: '--font-display',
+  variable: '--font-body',
   display: 'swap',
 })
 
@@ -32,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="bg-brand-dark text-brand-cream font-body antialiased">
+    <html lang="pt-BR" className={`${bricolage.variable} ${manrope.variable}`}>
+      <body className="bg-brand-bg text-brand-text font-body antialiased overflow-x-hidden">
         {children}
       </body>
     </html>

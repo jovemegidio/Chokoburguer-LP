@@ -2,19 +2,146 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ShoppingBag, ChevronLeft, ChevronRight, Flame } from 'lucide-react'
+import { ShoppingBag, ArrowRight } from 'lucide-react'
 
-type FeaturedItem = {
-  name: string
-  tag: string
-  tagColor: string
-  price: string
-  image: string
-  description: string
-  bg: string
+const categories = [
+  {
+    id: 'burguers',
+    label: 'Hambúrgueres',
+    eyebrow: 'Categoria',
+    description: 'Artesanais, suculentos e feitos na hora. Escolha seu favorito e faça seu pedido agora.',
+    accent: '#2b67ff',
+    accentSoft: 'rgba(43,103,255,0.12)',
+    accentBorder: 'rgba(43,103,255,0.28)',
+    image: '/Chokoburguer-LP/images/burger.png',
+    cta: 'Ver hambúrgueres',
+    badge: 'Clássicos & especiais',
+  },
+  {
+    id: 'almoco',
+    label: 'Almoço executivo',
+    eyebrow: 'Categoria',
+    description: 'Marmitas completas, saborosas e quentinhas. Arroz, feijão, proteína e muito mais.',
+    accent: '#19b66b',
+    accentSoft: 'rgba(25,182,107,0.12)',
+    accentBorder: 'rgba(25,182,107,0.28)',
+    image: '/Chokoburguer-LP/images/lunch.png',
+    cta: 'Ver marmitas',
+    badge: 'Marmitas completas',
+  },
+]
+
+export default function Destaques() {
+  const ref    = useRef<HTMLElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  return (
+    <section ref={ref} id="destaques" className="py-20 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Section header */}
+        <motion.div
+          className="mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="eyebrow--light">Categorias</span>
+          <h2
+            className="font-display font-black mt-4 leading-[0.94] tracking-tight"
+            style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', color: '#f9f4ed' }}
+          >
+            O que você vai{' '}
+            <span style={{ color: '#f1c643' }}>querer hoje?</span>
+          </h2>
+        </motion.div>
+
+        {/* Category cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {categories.map((cat, i) => (
+            <motion.div
+              key={cat.id}
+              className="paper-card overflow-hidden flex flex-col"
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {/* Image area */}
+              <div
+                className="relative h-60 overflow-hidden"
+                style={{ background: `radial-gradient(circle at 80% 50%, ${cat.accentSoft}, transparent 70%), #f0e8d8` }}
+              >
+                {/* Decorative circle */}
+                <div
+                  className="absolute -right-10 -top-10 w-52 h-52 rounded-full opacity-20"
+                  style={{ background: cat.accent }}
+                />
+                <div
+                  className="absolute -left-6 -bottom-6 w-32 h-32 rounded-full opacity-10"
+                  style={{ background: cat.accent }}
+                />
+
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={cat.image}
+                  alt={cat.label}
+                  className="relative z-10 w-full h-full object-contain p-6 drop-shadow-2xl"
+                  loading="lazy"
+                />
+
+                {/* Badge */}
+                <span
+                  className="absolute top-4 left-4 z-20 inline-flex items-center h-7 px-3 rounded-full text-[11px] font-black tracking-wide uppercase"
+                  style={{
+                    background: cat.accentSoft,
+                    border: `1px solid ${cat.accentBorder}`,
+                    color: cat.accent,
+                  }}
+                >
+                  {cat.badge}
+                </span>
+              </div>
+
+              {/* Body */}
+              <div className="p-7 flex flex-col gap-4 flex-1">
+                <div>
+                  <p
+                    className="text-[11px] font-black tracking-widest uppercase mb-2"
+                    style={{ color: cat.accent }}
+                  >
+                    {cat.eyebrow}
+                  </p>
+                  <h3
+                    className="font-display font-extrabold text-2xl sm:text-3xl tracking-tight leading-tight mb-3"
+                    style={{ color: '#121820' }}
+                  >
+                    {cat.label}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: '#5f6772' }}>
+                    {cat.description}
+                  </p>
+                </div>
+
+                <a
+                  href="https://pedido.anota.ai/loja/chokoburguer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center gap-2 font-black text-sm transition-all duration-200 hover:gap-3"
+                  style={{ color: cat.accent }}
+                >
+                  <ShoppingBag size={15} />
+                  {cat.cta}
+                  <ArrowRight size={14} />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }
 
-const featured: FeaturedItem[] = [
   {
     name: 'Sorvete Chocolate',
     tag: '🔥 Mais pedido',

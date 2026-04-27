@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { ShoppingBag, ChevronRight } from 'lucide-react'
+import { ShoppingBag, ChevronRight, Search } from 'lucide-react'
 
 type MenuItem = {
   name: string
@@ -14,15 +14,250 @@ type MenuItem = {
 type Category = {
   id: string
   label: string
-  emoji: string
   items: MenuItem[]
 }
 
 const categories: Category[] = [
   {
     id: 'pequena',
-    label: 'Marmita Pequena',
-    emoji: '🍱',
+    label: 'Marmita P',
+    items: [
+      { name: 'Marmitex Omelete',      description: 'Arroz, feijão, farofa temperada, vinagrete e omelete com queijo',                        price: 'R$ 13', image: 'https://anotaai.s3.us-west-2.amazonaws.com/produtos/Marmitex%20Pequeno%20-%20Omelete1677797474593blob.webp' },
+      { name: 'Filézinho de Frango',    description: 'Arroz, feijão, farofa, vinagrete e 3 tirinhas de frango empanadas',                      price: 'R$ 13', image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/-1721225956155blob.webp' },
+      { name: 'Linguiça Calabresa',     description: 'Arroz, feijão, farofa temperada, vinagrete e calabresa acebolada',                       price: 'R$ 13', image: 'https://anotaai.s3.us-west-2.amazonaws.com/produtos/Marmitex%20Pequeno%20-%20Lingui%C3%A7a%20Calabresa1677792795011blob.webp' },
+      { name: 'Linguiça Toscana',       description: 'Arroz, feijão, linguiça toscana fresca frita acebolada, ovo frito, farofa e vinagrete',  price: 'R$ 13', image: 'https://anotaai.s3.us-west-2.amazonaws.com/produtos/Marmitex%20Pequeno%20-%20Lingui%C3%A7a%20Toscana1677779338085blob.webp' },
+      { name: 'Frango com Fritas',      description: 'Arroz, feijão, farofa, vinagrete, batatas fritas e filézinhos de frango',                price: 'R$ 15' },
+      { name: 'Peixe (Filezinho)',       description: 'Arroz, feijão, fritas, salada e filézinhos de peixe empanados',                         price: 'R$ 17' },
+    ],
+  },
+  {
+    id: 'media',
+    label: 'Marmita M',
+    items: [
+      { name: 'Bife à Cavalo',     description: 'Arroz, feijão, ovo e batata frita',                                          price: 'R$ 27', image: 'https://anotaai.s3.us-west-2.amazonaws.com/produtos/Bife%20%C3%A1%20Cavalo1677780023118blob.webp' },
+      { name: 'Bife Parmegiana',   description: 'Arroz, feijão, salada e batata frita',                                       price: 'R$ 28', image: 'https://anotaai.s3.us-west-2.amazonaws.com/produtos/63ffbc7ecb78e3001cdd33ef1677790113437blob.webp' },
+      { name: 'Frango Parmegiana', description: 'Arroz, feijão, salada e batata frita',                                       price: 'R$ 23', image: 'https://anotaai.s3.us-west-2.amazonaws.com/produtos/Frango%20Parmegiana1677780375204blob.webp' },
+      { name: 'Contra Filé',       description: 'Arroz, feijão, salada e batata frita',                                       price: 'R$ 26', image: 'https://anotaai.s3.us-west-2.amazonaws.com/produtos/Contra%20Fil%C3%A91677798179641blob.webp' },
+      { name: 'Filé de Frango',    description: 'Arroz, feijão, salada e batata frita',                                       price: 'R$ 19', image: 'https://anotaai.s3.us-west-2.amazonaws.com/produtos/Fil%C3%A9%20de%20Frango1677800424169blob.webp' },
+      { name: 'Frango Pizzaiolo',  description: 'Arroz, feijão, salada, frango grelhado com mussarela e tomate',              price: 'R$ 22', image: 'https://anotaai.s3.us-west-2.amazonaws.com/produtos/Frango%20Pizzaiolo1677789059728blob.webp' },
+    ],
+  },
+  {
+    id: 'sorvetes',
+    label: 'Sorvetes',
+    items: [
+      { name: 'Chocolate',       description: 'Pote artesanal de 2 litros', price: 'R$ 27', image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/64e610f006626e00279acf75/1c162196-4c16-4465-a47f-af9e3fef9c89-1692800787943blob.webp' },
+      { name: 'Ninho Trufado',   description: 'Pote artesanal de 2 litros', price: 'R$ 27', image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/64e610f006626e00279acf75/fd25889b-8cf1-44df-9626-4d13eefca835-1692800682044blob.webp' },
+      { name: 'ChocoBueno',      description: 'Pote artesanal de 2 litros', price: 'R$ 27', image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/-1763819821404blob.webp' },
+      { name: 'Paçoca Amendoim', description: 'Pote artesanal de 2 litros', price: 'R$ 27', image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/64e610f006626e00279acf75/09c272f7-9e97-459a-a277-74862aae541d-1692799898088blob.webp' },
+      { name: 'Choco Menta',     description: 'Pote artesanal de 2 litros', price: 'R$ 27', image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/-1709854877867blob.webp' },
+      { name: 'Torta de Limão',  description: 'Pote artesanal de 2 litros', price: 'R$ 27', image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/-1709854854313blob.webp' },
+      { name: 'Pistache',        description: 'Pote artesanal de 2 litros', price: 'R$ 27', image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/-1739403154368blob.webp' },
+    ],
+  },
+  {
+    id: 'doces',
+    label: 'Doces',
+    items: [
+      { name: 'Kit Kat Preto',   description: 'Peso liq. 41,5g',             price: 'R$ 6',  image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/-1721225419416blob.webp' },
+      { name: 'Kit Kat Branco',  description: 'Peso liq. 41,5g',             price: 'R$ 6',  image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/-1721225486273blob.webp' },
+      { name: 'Kinder Bueno',    description: '39g – Cremoso e irresistível', price: 'R$ 10', image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/-1721827861598blob.webp' },
+      { name: 'Ferrero Rocher',  description: 'O clássico ouro do chocolate', price: 'R$ 11' },
+    ],
+  },
+  {
+    id: 'bebidas',
+    label: 'Bebidas',
+    items: [
+      { name: 'Água',              description: 'Gelada e refrescante',  price: 'R$ 3',  image: 'https://anotaai.s3.us-west-2.amazonaws.com/produtos/63ffbc82cb78e3001cdd3bb61677789227656blob.webp' },
+      { name: 'Água com Gás',      description: 'Gelada e refrescante',  price: 'R$ 3',  image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/-1709853710440blob.webp' },
+      { name: 'Energético Monster',description: 'Monster Original',      price: 'R$ 12' },
+      { name: 'Red Bull',          description: 'Energético clássico',   price: 'R$ 12' },
+      { name: 'Schweppes',         description: 'Citrus original de limão', price: 'R$ 6', image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/-1744658751331blob.webp' },
+    ],
+  },
+]
+
+function MenuCard({ item, index }: { item: MenuItem; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.38, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+      className="paper-card overflow-hidden flex flex-col group hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] transition-all duration-300"
+    >
+      {/* Image */}
+      <div className="relative h-44 overflow-hidden" style={{ background: '#efe3d1' }}>
+        {item.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-5xl opacity-20">🍔</div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+        {item.price && (
+          <span
+            className="absolute bottom-3 right-3 font-black text-sm px-3 py-1 rounded-full"
+            style={{ background: 'linear-gradient(135deg, #ff5a36, #f1c643)', color: '#fff', boxShadow: '0 4px 12px rgba(255,90,54,0.4)' }}
+          >
+            {item.price}
+          </span>
+        )}
+      </div>
+
+      {/* Body */}
+      <div className="p-4 flex-1 flex flex-col gap-2">
+        <h3 className="font-black text-sm leading-tight" style={{ color: '#121820' }}>{item.name}</h3>
+        <p className="text-xs leading-relaxed flex-1" style={{ color: '#5f6772' }}>{item.description}</p>
+        <a
+          href="https://pedido.anota.ai/loja/chokoburguer"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-1 inline-flex items-center gap-1 font-black text-xs transition-all duration-200 hover:gap-2"
+          style={{ color: '#ff5a36' }}
+        >
+          Pedir agora
+          <ChevronRight size={13} />
+        </a>
+      </div>
+    </motion.div>
+  )
+}
+
+export default function Menu() {
+  const [active,  setActive]  = useState('pequena')
+  const [search,  setSearch]  = useState('')
+  const ref    = useRef<HTMLElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  const current   = categories.find((c) => c.id === active)!
+  const filtered  = search.trim()
+    ? current.items.filter((i) => i.name.toLowerCase().includes(search.toLowerCase()))
+    : current.items
+
+  return (
+    <section ref={ref} id="cardapio" className="py-20 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto">
+
+        {/* Menu stage */}
+        <div
+          className="relative overflow-hidden"
+          style={{
+            borderRadius: '36px',
+            border: '1px solid rgba(255,255,255,0.10)',
+            background: 'radial-gradient(ellipse at 8% 0%, rgba(255,90,54,0.18), transparent 44%), radial-gradient(ellipse at 92% 0%, rgba(43,103,255,0.16), transparent 44%), linear-gradient(180deg, #14202b, #0b1118)',
+          }}
+        >
+          {/* Header */}
+          <div className="p-8 sm:p-10 pb-0">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8"
+            >
+              <div>
+                <span className="eyebrow--light">Cardápio</span>
+                <h2
+                  className="font-display font-black mt-4 leading-[0.94] tracking-tight"
+                  style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', color: '#f9f4ed' }}
+                >
+                  O que vai{' '}
+                  <span style={{ color: '#f1c643' }}>pedir hoje?</span>
+                </h2>
+              </div>
+
+              {/* Search */}
+              <div
+                className="relative flex items-center gap-2 px-4 py-2.5 rounded-full"
+                style={{ border: '1px solid rgba(255,255,255,0.14)', background: 'rgba(255,255,255,0.06)' }}
+              >
+                <Search size={15} style={{ color: 'rgba(249,244,237,0.5)' }} />
+                <input
+                  type="search"
+                  placeholder="Buscar..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="bg-transparent outline-none text-sm w-36 placeholder:text-[rgba(249,244,237,0.38)]"
+                  style={{ color: '#f9f4ed' }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Filter tabs */}
+            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => { setActive(cat.id); setSearch('') }}
+                  className="flex-shrink-0 h-10 px-5 rounded-full font-black text-sm transition-all duration-200"
+                  style={
+                    active === cat.id
+                      ? {
+                          background: 'linear-gradient(135deg, #ff5a36, #ff8a49, #f1c643)',
+                          color: '#fff',
+                          boxShadow: '0 8px 20px rgba(255,90,54,0.32)',
+                        }
+                      : {
+                          border: '1px solid rgba(255,255,255,0.12)',
+                          background: 'rgba(255,255,255,0.05)',
+                          color: 'rgba(249,244,237,0.64)',
+                        }
+                  }
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Cards grid */}
+          <div className="p-8 sm:p-10 pt-6">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.22 }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+              >
+                {filtered.map((item, i) => (
+                  <MenuCard key={item.name} item={item} index={i} />
+                ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {filtered.length === 0 && (
+              <p className="text-center py-12" style={{ color: 'rgba(249,244,237,0.5)' }}>
+                Nenhum item encontrado.
+              </p>
+            )}
+
+            {/* CTA */}
+            <div className="mt-10 flex justify-center">
+              <a
+                href="https://pedido.anota.ai/loja/chokoburguer"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                <ShoppingBag size={16} />
+                Ver cardápio completo e pedir
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
     items: [
       { name: 'Marmitex Omelete',      description: 'Arroz, feijão, farofa temperada, vinagrete e omelete com queijo',                        price: 'R$ 13', image: 'https://anotaai.s3.us-west-2.amazonaws.com/produtos/Marmitex%20Pequeno%20-%20Omelete1677797474593blob.webp' },
       { name: 'Filézinho de Frango',    description: 'Arroz, feijão, farofa, vinagrete e 3 tirinhas de frango empanadas',                      price: 'R$ 13', image: 'https://client-assets.anota.ai/produtos/63ed187ad3accd0018c370d5/-1721225956155blob.webp' },

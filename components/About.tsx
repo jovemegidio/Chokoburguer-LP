@@ -2,11 +2,113 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Cookie, IceCream, Star, ChefHat } from 'lucide-react'
+import { Flame, Leaf, Star, ChefHat } from 'lucide-react'
 
 const features = [
   {
-    icon: <Cookie className="w-6 h-6" />,
+    icon: Flame,
+    color: '#ff5a36',
+    title: 'Hambúrguer artesanal',
+    description: 'Preparados na hora com ingredientes frescos e muito sabor, direto pra você.',
+  },
+  {
+    icon: Leaf,
+    color: '#19b66b',
+    title: 'Marmitas caprichadas',
+    description: 'Arroz, feijão, proteína e acompanhamentos — refeição completa e gostosa.',
+  },
+  {
+    icon: Star,
+    color: '#f1c643',
+    title: 'Sorvetes artesanais',
+    description: 'Mais de 10 sabores em potes de 2 litros, feitos com ingredientes selecionados.',
+  },
+  {
+    icon: ChefHat,
+    color: '#2b67ff',
+    title: 'Feito com carinho',
+    description: 'Cada prato preparado para garantir sabor e qualidade em cada entrega.',
+  },
+]
+
+export default function About() {
+  const ref    = useRef<HTMLElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  return (
+    <section ref={ref} id="sobre" className="py-20 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-8 items-start">
+
+          {/* Left — dark card */}
+          <motion.div
+            className="glass-card p-8 sm:p-10 relative overflow-hidden"
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              background: 'radial-gradient(ellipse at 0% 0%, rgba(255,90,54,0.14), transparent 54%), radial-gradient(ellipse at 100% 100%, rgba(43,103,255,0.12), transparent 44%), linear-gradient(160deg, #14202b, #0b1118)',
+            }}
+          >
+            <span className="eyebrow--light">Nossa história</span>
+
+            <h2
+              className="font-display font-black mt-5 mb-5 leading-[0.94] tracking-tight"
+              style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', color: '#f9f4ed' }}
+            >
+              A primeira{' '}
+              <span style={{ color: '#f1c643' }}>hambúrgueria</span>
+              <br />
+              <span style={{ color: '#ff5a36' }}>doce</span>{' '}
+              do Brasil
+            </h2>
+
+            <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(249,244,237,0.72)' }}>
+              O <strong style={{ color: '#f1c643' }}>Chokoburguer</strong> nasceu de um sonho simples e ousado: provar que chocolate e hambúrguer podem dividir o mesmo espaço, a mesma mesa e o mesmo coração.
+            </p>
+
+            <p className="text-sm leading-relaxed mb-8" style={{ color: 'rgba(249,244,237,0.72)' }}>
+              Com marmitas caprichadas, sorvetes artesanais em potes de 2 litros, doces importados e muito mais, somos pioneiros em uma experiência gastronômica única.
+            </p>
+
+            <div
+              className="inline-flex items-center gap-3 px-5 py-3 rounded-xl"
+              style={{ border: '1px solid rgba(241,198,67,0.28)', background: 'rgba(241,198,67,0.08)' }}
+            >
+              <span className="text-xl">🍫</span>
+              <p className="text-sm font-black italic" style={{ color: '#f1c643' }}>
+                &ldquo;A primeira hambúrgueria doce do Brasil!&rdquo;
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Right — feature cards grid */}
+          <div className="grid sm:grid-cols-2 gap-4">
+            {features.map((f, i) => (
+              <motion.div
+                key={f.title}
+                className="paper-card p-6"
+                initial={{ opacity: 0, y: 24 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
+                  style={{ background: `${f.color}18`, color: f.color }}
+                >
+                  <f.icon size={20} />
+                </div>
+                <h3 className="font-black text-sm mb-2" style={{ color: '#121820' }}>{f.title}</h3>
+                <p className="text-xs leading-relaxed" style={{ color: '#5f6772' }}>{f.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
     title: 'Hambúrguer com Chocolate',
     description:
       'A ideia que ninguém tinha ousado: combinamos o mundo salgado das marmitas com a doçura única do chocolate artesanal.',
