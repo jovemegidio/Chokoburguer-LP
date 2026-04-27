@@ -58,7 +58,7 @@ export default function Reviews() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} className="relative py-24 bg-brand-dark overflow-hidden">
+    <section ref={ref} className="relative py-24 bg-brand-paper overflow-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-gold/20 to-transparent" />
 
       {/* Glow */}
@@ -81,7 +81,7 @@ export default function Reviews() {
           </h2>
           <div className="flex items-center justify-center gap-2 mt-3">
             <Stars />
-            <span className="text-brand-cream/50 text-sm">5.0 · +200 avaliações</span>
+            <span className="text-brand-dark/50 text-sm">5.0 · +200 avaliações</span>
           </div>
         </motion.div>
 
@@ -100,7 +100,7 @@ export default function Reviews() {
 
               <Stars count={r.rating} />
 
-              <p className="text-brand-cream/70 text-sm leading-relaxed flex-1 italic">
+              <p className="text-brand-dark/70 text-sm leading-relaxed flex-1 italic">
                 &ldquo;{r.text}&rdquo;
               </p>
 
@@ -110,7 +110,7 @@ export default function Reviews() {
               </span>
 
               {/* Author */}
-              <div className="flex items-center gap-3 pt-1 border-t border-white/5">
+              <div className="flex items-center gap-3 pt-1 border-t border-brand-dark/8">
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
                   style={{ background: r.avatarBg }}
@@ -118,8 +118,8 @@ export default function Reviews() {
                   {r.avatar}
                 </div>
                 <div>
-                  <p className="text-brand-cream text-sm font-semibold leading-none">{r.name}</p>
-                  <p className="text-brand-cream/40 text-xs mt-0.5">{r.date}</p>
+                  <p className="text-brand-dark text-sm font-semibold leading-none">{r.name}</p>
+                  <p className="text-brand-dark/40 text-xs mt-0.5">{r.date}</p>
                 </div>
               </div>
             </motion.div>

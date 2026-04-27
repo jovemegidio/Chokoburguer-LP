@@ -45,7 +45,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} id="sobre" className="relative py-24 bg-brand-chocolate/20 overflow-hidden">
+    <section ref={ref} id="sobre" className="relative py-24 bg-brand-paper-soft overflow-hidden">
       {/* Borders */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent" />
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-gold/20 to-transparent" />
@@ -72,7 +72,7 @@ export default function About() {
             </motion.p>
 
             <motion.h2
-              className="font-display text-4xl md:text-5xl font-bold text-brand-cream leading-tight mb-6"
+              className="font-display text-4xl md:text-5xl font-bold text-brand-dark leading-tight mb-6"
               variants={fadeUp}
               custom={0.08}
               initial="hidden"
@@ -84,7 +84,7 @@ export default function About() {
             </motion.h2>
 
             <motion.p
-              className="text-brand-cream/60 leading-relaxed mb-5"
+              className="text-brand-dark/60 leading-relaxed mb-5"
               variants={fadeUp}
               custom={0.16}
               initial="hidden"
@@ -94,7 +94,7 @@ export default function About() {
             </motion.p>
 
             <motion.p
-              className="text-brand-cream/60 leading-relaxed mb-8"
+              className="text-brand-dark/60 leading-relaxed mb-8"
               variants={fadeUp}
               custom={0.22}
               initial="hidden"
@@ -132,8 +132,8 @@ export default function About() {
                 <div className="w-11 h-11 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-4 group-hover:bg-brand-gold/20 transition-colors">
                   {f.icon}
                 </div>
-                <h3 className="text-brand-cream font-semibold text-sm mb-2">{f.title}</h3>
-                <p className="text-brand-cream/50 text-xs leading-relaxed">{f.description}</p>
+                <h3 className="text-brand-dark font-semibold text-sm mb-2">{f.title}</h3>
+                <p className="text-brand-dark/50 text-xs leading-relaxed">{f.description}</p>
               </motion.div>
             ))}
           </div>

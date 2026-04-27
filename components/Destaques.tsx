@@ -79,7 +79,7 @@ function FeaturedCard({ item, index, inView }: { item: FeaturedItem; index: numb
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="group glass-card overflow-hidden hover:border-brand-gold/40 hover:shadow-[0_8px_48px_#C07C3B35] transition-all duration-500 flex flex-col h-full">
+      <div className="group glass-card overflow-hidden hover:border-brand-gold/40 hover:shadow-[0_8px_48px_#C07C3B25] transition-all duration-500 flex flex-col h-full">
         {/* Image */}
         <div className="relative h-56 overflow-hidden" style={{ background: item.bg }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -89,7 +89,7 @@ function FeaturedCard({ item, index, inView }: { item: FeaturedItem; index: numb
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/85 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
           {/* Tag */}
           <span className={`absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full ${item.tagColor}`}>
@@ -105,8 +105,8 @@ function FeaturedCard({ item, index, inView }: { item: FeaturedItem; index: numb
         {/* Body */}
         <div className="p-5 flex-1 flex flex-col gap-3">
           <div>
-            <h3 className="text-brand-cream font-semibold leading-tight mb-1">{item.name}</h3>
-            <p className="text-brand-cream/50 text-xs">{item.description}</p>
+            <h3 className="text-brand-dark font-semibold leading-tight mb-1">{item.name}</h3>
+            <p className="text-brand-dark/50 text-xs">{item.description}</p>
           </div>
           <a
             href="https://pedido.anota.ai/loja/chokoburguer"
@@ -133,7 +133,7 @@ export default function Destaques() {
   }
 
   return (
-    <section ref={ref} id="destaques" className="relative py-24 bg-brand-brown/20 overflow-hidden">
+    <section ref={ref} id="destaques" className="relative py-24 bg-brand-paper-soft overflow-hidden">
       {/* Borders */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent" />
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-gold/20 to-transparent" />
@@ -167,14 +167,14 @@ export default function Destaques() {
             <button
               onClick={() => scroll('l')}
               aria-label="Anterior"
-              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold/30 transition-all"
+              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-brand-dark/60 hover:text-brand-gold hover:border-brand-gold/30 transition-all"
             >
               <ChevronLeft size={18} />
             </button>
             <button
               onClick={() => scroll('r')}
               aria-label="Próximo"
-              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold/30 transition-all"
+              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-brand-dark/60 hover:text-brand-gold hover:border-brand-gold/30 transition-all"
             >
               <ChevronRight size={18} />
             </button>

@@ -40,7 +40,7 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} id="contato" className="relative py-24 bg-brand-dark overflow-hidden">
+    <section ref={ref} id="contato" className="relative py-24 bg-brand-paper overflow-hidden">
       {/* Top border */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent" />
 
@@ -62,7 +62,7 @@ export default function Contact() {
           <h2 className="section-title mb-4">
             Estamos aqui <span className="gold-gradient">pra você</span>
           </h2>
-          <p className="text-brand-cream/50 max-w-sm mx-auto text-sm">
+          <p className="text-brand-dark/50 max-w-sm mx-auto text-sm">
             Pedido mínimo R$ 15,00 · Entrega na região
           </p>
         </motion.div>
@@ -82,9 +82,9 @@ export default function Contact() {
                   {card.icon}
                 </div>
                 <div>
-                  <p className="text-brand-cream/50 text-xs mb-0.5">{card.label}</p>
-                  <p className="text-brand-cream font-semibold text-sm">{card.value}</p>
-                  <p className="text-brand-cream/40 text-xs mt-0.5">{card.sub}</p>
+                  <p className="text-brand-dark/50 text-xs mb-0.5">{card.label}</p>
+                  <p className="text-brand-dark font-semibold text-sm">{card.value}</p>
+                  <p className="text-brand-dark/40 text-xs mt-0.5">{card.sub}</p>
                 </div>
               </motion.div>
             ))}
@@ -102,10 +102,10 @@ export default function Contact() {
             </div>
 
             <div>
-              <h3 className="font-display text-2xl font-bold text-brand-cream mb-2">
+              <h3 className="font-display text-2xl font-bold text-brand-dark mb-2">
                 Pronto para pedir?
               </h3>
-              <p className="text-brand-cream/50 text-sm leading-relaxed">
+              <p className="text-brand-dark/50 text-sm leading-relaxed">
                 Acesse nosso cardápio, escolha seus favoritos e receba na porta.
               </p>
             </div>

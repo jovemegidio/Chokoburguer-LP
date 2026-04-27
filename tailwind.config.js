@@ -9,14 +9,16 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          brown:    '#3B1F0E',
-          dark:     '#1A0A00',
-          chocolate:'#5C2D0A',
-          caramel:  '#C07C3B',
-          gold:     '#E8A630',
-          cream:    '#FDF3E3',
-          pink:     '#F4A5C0',
-          red:      '#D94F2B',
+          brown:       '#3B1F0E',
+          dark:        '#1A0A00',
+          chocolate:   '#5C2D0A',
+          caramel:     '#C07C3B',
+          gold:        '#E8A630',
+          cream:       '#FDF3E3',
+          pink:        '#F4A5C0',
+          red:         '#D94F2B',
+          paper:       '#FDF6EE',
+          'paper-soft':'#EFE6D9',
         },
       },
       fontFamily: {

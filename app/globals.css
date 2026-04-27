@@ -20,7 +20,7 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #1A0A00;
+    background: #EFE6D9;
   }
   ::-webkit-scrollbar-thumb {
     background: #C07C3B;
@@ -34,11 +34,11 @@
   }
 
   .btn-outline {
-    @apply inline-flex items-center gap-2 px-8 py-3.5 rounded-full border-2 border-brand-gold text-brand-gold font-semibold text-sm tracking-wide uppercase transition-all duration-300 hover:bg-brand-gold hover:text-brand-dark hover:scale-105 active:scale-95;
+    @apply inline-flex items-center gap-2 px-8 py-3.5 rounded-full border-2 border-brand-dark/30 text-brand-dark font-semibold text-sm tracking-wide uppercase transition-all duration-300 hover:bg-brand-dark hover:text-brand-cream hover:scale-105 active:scale-95;
   }
 
   .section-title {
-    @apply font-display text-4xl md:text-5xl font-bold text-brand-cream;
+    @apply font-display text-4xl md:text-5xl font-bold text-brand-dark;
   }
 
   .gold-gradient {
@@ -46,7 +46,7 @@
   }
 
   .glass-card {
-    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl;
+    @apply bg-white border border-brand-dark/10 rounded-2xl shadow-sm;
   }
 
   .shimmer-gold {

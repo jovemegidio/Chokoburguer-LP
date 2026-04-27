@@ -100,7 +100,7 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
       className="glass-card overflow-hidden group hover:border-brand-gold/35 hover:shadow-[0_0_36px_#C07C3B25] transition-all duration-300 flex flex-col"
     >
       {/* Image */}
-      <div className="relative h-44 bg-brand-chocolate/30 overflow-hidden">
+      <div className="relative h-44 bg-brand-paper-soft overflow-hidden">
         {item.image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -114,7 +114,7 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
             <span className="text-5xl opacity-20">🍔</span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
         {item.price && (
           <span className="absolute bottom-3 right-3 bg-brand-gold text-brand-dark text-xs font-bold px-2.5 py-1 rounded-full shadow-lg">
             {item.price}
@@ -124,8 +124,8 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
 
       {/* Body */}
       <div className="p-4 flex-1 flex flex-col gap-2">
-        <h3 className="text-brand-cream font-semibold text-sm leading-tight">{item.name}</h3>
-        <p className="text-brand-cream/50 text-xs leading-relaxed flex-1">{item.description}</p>
+        <h3 className="text-brand-dark font-semibold text-sm leading-tight">{item.name}</h3>
+        <p className="text-brand-dark/50 text-xs leading-relaxed flex-1">{item.description}</p>
         <a
           href="https://pedido.anota.ai/loja/chokoburguer"
           target="_blank"
@@ -148,7 +148,7 @@ export default function Menu() {
   const current = categories.find((c) => c.id === active)!
 
   return (
-    <section ref={ref} id="cardapio" className="relative py-24 bg-brand-dark overflow-hidden">
+    <section ref={ref} id="cardapio" className="relative py-24 bg-brand-paper overflow-hidden">
       {/* Top rule */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent" />
 
@@ -164,7 +164,7 @@ export default function Menu() {
           <h2 className="section-title mb-4">
             O que vai <span className="gold-gradient">pedir hoje?</span>
           </h2>
-          <p className="text-brand-cream/50 max-w-md mx-auto text-sm leading-relaxed">
+          <p className="text-brand-dark/50 max-w-md mx-auto text-sm leading-relaxed">
             De marmitas caprichadas a sorvetes artesanais e doces importados.
           </p>
         </motion.div>
@@ -183,7 +183,7 @@ export default function Menu() {
               className={`flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
                 active === cat.id
                   ? 'bg-brand-gold text-brand-dark shadow-[0_0_20px_#E8A63040]'
-                  : 'glass-card text-brand-cream/70 hover:text-brand-gold hover:border-brand-gold/30'
+                  : 'glass-card text-brand-dark/60 hover:text-brand-gold hover:border-brand-gold/30'
               }`}
             >
               <span>{cat.emoji}</span>

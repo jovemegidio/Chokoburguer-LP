@@ -46,7 +46,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-brand-dark/90 backdrop-blur-md border-b border-brand-gold/20 shadow-[0_4px_30px_#00000060]'
+          ? 'bg-white/90 backdrop-blur-md border-b border-brand-dark/10 shadow-[0_4px_20px_rgba(0,0,0,0.06)]'
           : 'bg-transparent'
       }`}
     >
@@ -69,7 +69,7 @@ export default function Navbar() {
                 key={l.href}
                 href={l.href}
                 className="relative text-sm font-medium transition-colors duration-200"
-                style={{ color: isActive ? '#E8A630' : 'rgba(253,243,227,0.65)' }}
+                style={{ color: isActive ? '#E8A630' : 'rgba(26,10,0,0.60)' }}
               >
                 {l.label}
                 {isActive && (
@@ -98,7 +98,7 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-brand-cream/80 hover:text-brand-gold transition-colors p-1"
+          className="md:hidden text-brand-dark/70 hover:text-brand-gold transition-colors p-1"
           aria-label="Menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -113,7 +113,7 @@ export default function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden overflow-hidden bg-brand-dark/95 backdrop-blur-md border-b border-brand-gold/20"
+            className="md:hidden overflow-hidden bg-white/95 backdrop-blur-md border-b border-brand-dark/10"
           >
             <nav className="flex flex-col px-6 py-4 gap-4">
               {links.map((l) => (
@@ -121,7 +121,7 @@ export default function Navbar() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-brand-cream/80 hover:text-brand-gold transition-colors font-medium"
+                  className="text-brand-dark/70 hover:text-brand-gold transition-colors font-medium"
                 >
                   {l.label}
                 </a>

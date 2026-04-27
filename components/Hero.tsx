@@ -31,7 +31,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-brand-dark hero-pattern noise"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-brand-paper hero-pattern noise"
       onMouseMove={(e) => {
         mouseX.set((e.clientX / window.innerWidth - 0.5) * 35)
         mouseY.set((e.clientY / window.innerHeight - 0.5) * 35)
@@ -39,20 +39,20 @@ export default function Hero() {
     >
       {/* Blobs */}
       <motion.div
-        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] pointer-events-none"
+        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full opacity-10 blur-[120px] pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, #C07C3B, #3B1F0E)',
+          background: 'radial-gradient(circle, #E8A630, #C07C3B)',
           x: springX,
           y: springY,
         }}
       />
       <div
-        className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full opacity-15 blur-[100px] animate-float pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #E8A630, #5C2D0A)' }}
+        className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full opacity-8 blur-[100px] animate-float pointer-events-none"
+        style={{ background: 'radial-gradient(circle, #E8A63050, #C07C3B30)' }}
       />
       <div
-        className="absolute top-[30%] right-[20%] w-[300px] h-[300px] rounded-full opacity-10 blur-[80px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #F4A5C0, #3B1F0E)' }}
+        className="absolute top-[30%] right-[20%] w-[300px] h-[300px] rounded-full opacity-8 blur-[80px] pointer-events-none"
+        style={{ background: 'radial-gradient(circle, #F4A5C050, transparent)' }}
       />
 
       {/* Floating food emojis */}
@@ -77,8 +77,8 @@ export default function Hero() {
 
       {/* Decorative rings */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-        <div className="w-[700px] h-[700px] rounded-full border border-brand-gold/10 animate-[spin_40s_linear_infinite]" />
-        <div className="absolute w-[500px] h-[500px] rounded-full border border-brand-caramel/10 animate-[spin_30s_linear_infinite_reverse]" />
+        <div className="w-[700px] h-[700px] rounded-full border border-brand-gold/20 animate-[spin_40s_linear_infinite]" />
+        <div className="absolute w-[500px] h-[500px] rounded-full border border-brand-caramel/15 animate-[spin_30s_linear_infinite_reverse]" />
       </div>
 
       {/* Content */}
@@ -102,11 +102,11 @@ export default function Hero() {
           variants={item}
           className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6"
         >
-          <span className="text-brand-cream">Onde o</span>{' '}
+          <span className="text-brand-dark">Onde o</span>{' '}
           <span className="shimmer-gold">chocolate</span>{' '}
-          <span className="text-brand-cream">encontra</span>
+          <span className="text-brand-dark">encontra</span>
           <br />
-          <span className="text-brand-cream">o</span>{' '}
+          <span className="text-brand-dark">o</span>{' '}
           <span className="shimmer-gold">burguer</span>
           <span className="text-brand-caramel">.</span>
         </motion.h1>
@@ -114,7 +114,7 @@ export default function Hero() {
         {/* Subtitle */}
         <motion.p
           variants={item}
-          className="max-w-xl mx-auto text-brand-cream/60 text-lg md:text-xl leading-relaxed mb-10"
+          className="max-w-xl mx-auto text-brand-dark/55 text-lg md:text-xl leading-relaxed mb-10"
         >
           Marmitas, sorvetes artesanais, doces e a experiência mais doce de delivery que você já provou.
         </motion.p>
@@ -154,7 +154,7 @@ export default function Hero() {
           ].map((s) => (
             <div key={s.label} className="text-center">
               <div className="text-2xl font-display font-bold text-brand-gold">{s.value}</div>
-              <div className="text-xs text-brand-cream/50 mt-0.5">{s.label}</div>
+              <div className="text-xs text-brand-dark/50 mt-0.5">{s.label}</div>
             </div>
           ))}
         </motion.div>
@@ -163,7 +163,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <motion.a
         href="#destaques"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-brand-cream/30 hover:text-brand-gold transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-brand-dark/30 hover:text-brand-gold transition-colors"
         aria-label="Rolar para baixo"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
